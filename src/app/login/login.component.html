@@ -1,0 +1,98 @@
+<div class="page">
+  <div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
+    <mat-card class="example-card">
+      <mat-card-header>
+        <mat-card-title>
+          <div style="margin-bottom: 20px;">
+            <img src="assets/img/ems.png" />
+          </div>
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <form class="example-form" [formGroup]="LoginForm">
+          <table class="example-full-width" cellspacing="0">
+            <tr>
+              <td>
+                <mat-form-field class="example-full-width">
+                  <input
+                    formControlName="Email"
+                    matInput
+                    placeholder="Email"
+                    [(ngModel)]="email"
+                    required
+                  />
+                  <div
+                    *ngIf="
+                      LoginForm.controls['Email'].touched &&
+                      LoginForm.controls['Email'].hasError('required')
+                    "
+                    class="  alert alert-danger text-left"
+                  >
+                    Email is Required
+                  </div>
+                  <div
+                    *ngIf="
+                      LoginForm.controls['Email'].touched &&
+                      LoginForm.controls['Email'].hasError('pattern')
+                    "
+                    class="  alert alert-danger text-left"
+                  >
+                    Enter Valid Email.
+                  </div>
+                </mat-form-field>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <mat-form-field class="example-full-width">
+                  <input
+                    formControlName="Password"
+                    matInput
+                    placeholder="Password"
+                    [(ngModel)]="password"
+                    type="password"
+                    required
+                  />
+                  <div
+                    *ngIf="
+                      LoginForm.controls['Password'].touched &&
+                      LoginForm.controls['Password'].hasError('required')
+                    "
+                    class="  alert alert-danger text-left"
+                  >
+                    Password is Required
+                  </div>
+                  <div
+                    *ngIf="
+                      LoginForm.controls['Password'].touched &&
+                      LoginForm.controls['Password'].hasError('minlength')
+                    "
+                    class="  alert alert-danger text-left"
+                  >
+                    Password Length must be at least 5 characters.
+                  </div>
+                </mat-form-field>
+              </td>
+            </tr>
+          </table>
+        </form>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button (click)="login()" class="basic-button mt-2">
+          Login
+        </button>
+      </mat-card-actions>
+      <div style="text-align: center;  margin-top: 15px;" >
+					Don't have an account? <a [routerLink]="[ '/signup' ]"> Sign Up</a>
+    </div>
+    </mat-card>
+    <ngx-spinner
+      bdColor="rgba(51,51,51,0.8)"
+      size="medium"
+      color="#fff"
+      type="ball-scale-multiple"
+    >
+      <p style="font-size: 20px; color: white">Loading...</p>
+    </ngx-spinner>
+  </div>
+</div>

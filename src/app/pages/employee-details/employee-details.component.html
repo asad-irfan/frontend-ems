@@ -1,0 +1,68 @@
+
+
+
+  <div class="row" >
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+            <div class=" col-lg-12 row welcome-card  ">
+                <div class="w3-xlarge  col-lg-2 p-0" style="text-align: center;">
+                    <button class="btn btn-success btn-sm" (click)="goBack()"><i class="fa fa-chevron-left" ></i> Back</button> 
+                    <!-- <i class="fa fa-chevron-left" aria-hidden="true" (click)="goBack()"> Back</i> -->
+
+                  </div>
+                                   
+            
+                </div>
+                <div class="row" style="width: 100%">
+                  <div class="col-lg-12 justify-content-center">
+                    <h1 class="m-0">Employee Details</h1>
+                </div>
+
+              
+              </div>
+        </div>
+         <div class="card-body">
+        
+            <form class="col-lg-12 row  p-3 mt-2 mb-5 justify-content-center"  [formGroup]="EditForm">
+               
+                <div class="row" style="width: 100%;">
+                    <div class="col-lg-8">
+                      <label class="font-bold mt-2">Frist Name</label>
+                      <input   formControlName="FirstName" type="text" class="form-control "  [(ngModel)]="firstName" placeholder="First name" >
+                      <div *ngIf="EditForm.controls['FirstName'].touched && EditForm.controls['FirstName'].hasError('required')" class="error-msg alert alert-danger text-left">First Name is required</div>
+                      <div *ngIf="EditForm.controls['FirstName'].touched && EditForm.controls['FirstName'].hasError('pattern')" class="error-msg alert alert-danger text-left">First Name contains only characters.</div>
+                    </div>
+                  <div class="col-lg-8">
+                      <label class="font-bold mt-2">Last Name</label>
+                      <input   formControlName="LastName" type="text" class="form-control   "  [(ngModel)]="lastName" placeholder="Last name" >
+                      <div *ngIf="EditForm.controls['LastName'].touched && EditForm.controls['LastName'].hasError('required')" class="error-msg alert alert-danger text-left">Last Name is required</div>
+                      <div *ngIf="EditForm.controls['LastName'].touched && EditForm.controls['LastName'].hasError('pattern')" class="error-msg alert alert-danger text-left">Last Name contains only characters.</div>
+                    </div>
+                  <div class="col-lg-8">
+                    <label class="font-bold mt-2">Email </label>
+                    <input formControlName="Email" type="email" class="form-control " [(ngModel)]="email" placeholder="Email">
+                    <div *ngIf="EditForm.controls['Email'].touched && EditForm.controls['Email'].hasError('required')" class="error-msg alert alert-danger text-left">Email is required</div>
+                    <div *ngIf="EditForm.controls['Email'].touched && EditForm.controls['Email'].hasError('pattern')" class="error-msg alert alert-danger text-left">Enter proper Email.</div>
+                    </div>
+                
+              </div>
+              <div class="row d-flex justify-content-end mb-3 mt-3" style="width: 100%;">
+                <div class="col-lg-10 ">
+                <button type="button" class="btn btn-warning margin btn-lg" (click)="EditInfo()">Edit </button>
+                <button type="button" class="btn btn-primary margin btn-lg" [disabled]="!SaveButton" (click)="SaveInfo()">Save</button>
+                </div>
+              </div>
+
+                  </form>
+                  <ngx-spinner bdColor = "rgba(51, 51, 51, 0.8)"size = "medium"
+                  color = "white" type = "ball-clip-rotate" [fullScreen] = "true">
+                  <p style="color: white; margin-top:50px;font-size: 26px;" > Loading... </p>
+                  </ngx-spinner>
+               
+               
+      </div> 
+    </div>
+   
+  </div>
+  
